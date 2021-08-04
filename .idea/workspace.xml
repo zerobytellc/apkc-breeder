@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c906c29b-608d-421d-b57c-5c9b4763bf6a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/functions/apkcauthcheck.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/netlify.toml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/apkcauthcheck.js" beforeDir="false" afterPath="$PROJECT_DIR$/functions/apkcauthcheck.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/guides.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/guides.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +58,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1628089265228</updated>
-      <workItem from="1628089266861" duration="7843000" />
+      <workItem from="1628089266861" duration="9908000" />
     </task>
     <servers />
   </component>
