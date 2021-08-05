@@ -18,9 +18,9 @@ export default function Navbar() {
           (<ul>
               <li><Link href="/"><a>Home</a></Link></li>
               {!user && <li onClick={login} className="btn">Login/Signup</li>}
-              {user && user.app_metadata.roles.includes('admin') && <li><Link href="/admin">Administration</Link></li>}
-              {user && user.app_metadata.roles.includes('breeder') && <li><Link href="/pack">My Pack</Link></li>}
-              {user && !user.app_metadata.roles.includes('breeder') && <li><Link href="/pack_request">Become a Breeder</Link></li>}
+              {user && user.app_metadata.roles && user.app_metadata.roles.includes('admin') && <li><Link href="/admin">Administration</Link></li>}
+              {user && user.app_metadata.roles && user.app_metadata.roles.includes('breeder') && <li><Link href="/pack">My Pack</Link></li>}
+              {user && (!user.app_metadata.roles || !user.app_metadata.roles.includes('breeder')) && <li><Link href="/pack_request">Become a Breeder</Link></li>}
               {user && <li>{user.email}</li>}
               {user && <li onClick={logout} className="btn">Logout</li>}
           </ul>)
