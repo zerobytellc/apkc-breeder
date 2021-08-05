@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c906c29b-608d-421d-b57c-5c9b4763bf6a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/pages/pack.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions/apkcauthcheck.js" beforeDir="false" afterPath="$PROJECT_DIR$/functions/apkcauthcheck.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/guides.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/guides.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Navbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,11 +27,12 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="android.sdk.path" value="/opt/android-sdk" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/pages" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/pages" />
       <recent name="$PROJECT_DIR$/public" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -58,7 +60,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1628089265228</updated>
-      <workItem from="1628089266861" duration="9908000" />
+      <workItem from="1628089266861" duration="12930000" />
     </task>
     <servers />
   </component>

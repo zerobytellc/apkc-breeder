@@ -6,6 +6,8 @@ import {useContext} from "react";
 export default function Navbar() {
     const {user,login,logout,authReady} = useContext(AuthContext);
     console.log(user);
+    if (user)
+        console.log(user.app_metadata.roles);
 
   return (
     <div className="container">
@@ -15,8 +17,9 @@ export default function Navbar() {
           {authReady &&
           (<ul>
               <li><Link href="/"><a>Home</a></Link></li>
-              <li><Link href="/guides"><a>Guides</a></Link></li>
               {!user && <li onClick={login} className="btn">Login/Signup</li>}
+              {user && user.app_metadata.roles.includes('admin') && <li><Link href="/admin">Administration</Link></li>}
+              {user && user.app_metadata.roles.includes('breeder') && <li><Link href="/pack">My Pack</Link></li>}
               {user && <li>{user.email}</li>}
               {user && <li onClick={logout} className="btn">Logout</li>}
           </ul>)
