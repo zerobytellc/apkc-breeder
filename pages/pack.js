@@ -25,7 +25,6 @@ export default function Guides() {
   return (
     <div className={styles.guides}>
       <h2>My Pack</h2>
-        {user && !user.app_metadata.roles.includes('breeder') && <span>
             <p>You are not currently registered as an APKC Breeder. Please submit your request to become an APKC Breeder below, and
             we will follow up with you shortly.</p>
             <form name="apkc_breeder_request" method="post" data-netlify="true" onSubmit="submit">
@@ -44,7 +43,6 @@ export default function Guides() {
                     <button type="submit">Submit Request</button>
                 </p>
             </form>
-        </span>}
     </div>
   )
 }
