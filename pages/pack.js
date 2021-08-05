@@ -28,7 +28,8 @@ export default function Guides() {
         {user && !user.app_metadata.roles.includes('breeder') && <span>
             <p>You are not currently registered as an APKC Breeder. Please submit your request to become an APKC Breeder below, and
             we will follow up with you shortly.</p>
-            <form name="apkc_breeder_request" netlify>
+            <form name="apkc_breeder_request" method="post" data-netlify="true" onSubmit="submit">
+                <input type="hidden" name="form-name" value="apkc_breeder_request"/>
                 <p>
                     <label>Name <input type="text" name="name" value={user.user_metadata.full_name}/></label>
                 </p>
@@ -40,7 +41,7 @@ export default function Guides() {
                 </p>
                 <div data-netlify-recaptcha="true" className="form-row"></div>
                 <p>
-                    <button type="submit">Send</button>
+                    <button type="submit">Submit Request</button>
                 </p>
             </form>
         </span>}
