@@ -30,10 +30,10 @@ export default function Guides() {
             <form name="apkc_breeder_request" method="post" data-netlify="true" onSubmit="submit">
                 <input type="hidden" name="form-name" value="apkc_breeder_request"/>
                 <p>
-                    <label>Name <input type="text" name="name" value={user.user_metadata.full_name}/></label>
+                    <label>Name <input type="text" name="name" /></label>
                 </p>
                 <p>
-                    <label>Email <input type="text" name="email" value={user.email}/></label>
+                    <label>Email <input type="text" name="email" /></label>
                 </p>
                 <p>
                     <label>Message (Optional) <input type="text" name="message"/></label>
