@@ -1,4 +1,4 @@
-exports.handler = async (event, context) => {
+exports.handler = async (req, context) => {
     const body = JSON.parse(req.body)
 
     const eventType = body.event
