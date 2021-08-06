@@ -16,10 +16,10 @@ exports.handler = async (req, context) => {
 
     if (eventType === 'login') {
         if ( roles.includes("breeder") ) {
-            console.log( '' );
+            console.log( `User ${user.id} logged in and already had role 'breeder'` );
         } else {
             roles.push('breeder');
-            console.log( "User: ${user.id} logged in and granted role 'breeder'" );
+            console.log( `User: ${user.id} logged in and granted role 'breeder'` );
         }
 
         return {
