@@ -5,7 +5,7 @@ exports.handler = async (req, context) => {
     const user = body.user
     const email = user.email
 
-    console.log('User details: ' + user);
+    console.log(user, `${user.id} details`);
     if ( context.ClientContext && context.ClientContext.user )
         console.log('UserContext: ' + context.ClientContext.user)
 
