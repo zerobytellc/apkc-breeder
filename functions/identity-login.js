@@ -5,6 +5,9 @@ exports.handler = async (req, context) => {
     const user = body.user
     const email = user.email
 
+    console.log('User details: ' + user);
+    if ( context.ClientContext && context.ClientContext.user )
+        console.log('UserContext: ' + context.ClientContext.user)
 
     let roles = [];
     if ( user.app_metadata.roles ) {
@@ -13,7 +16,7 @@ exports.handler = async (req, context) => {
 
     if (eventType === 'login') {
         if ( roles.includes("breeder") ) {
-            console.log( "User: ${user.id} logged in and already has role 'breeder'" );
+            console.log( '' );
         } else {
             roles.push('breeder');
             console.log( "User: ${user.id} logged in and granted role 'breeder'" );
