@@ -36,7 +36,7 @@ export default function Guides() {
                     <label>Email <input type="text" name="email" /></label>
                 </p>
                 <p>
-                    <label>Message (Optional) <input type="text" name="message"/></label>
+                    <label>Message (Optional) <textarea type="text" name="message"/></label>
                 </p>
                 <div data-netlify-recaptcha="true" className="form-row"></div>
                 <p>
