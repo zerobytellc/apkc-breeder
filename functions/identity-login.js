@@ -15,16 +15,16 @@ exports.handler = async (req, context) => {
     }
 
     if (eventType === 'login') {
-        if ( roles.includes("breeder") ) {
+        if ( user.app_metadata.roles.includes("breeder") ) {
             console.log( `User ${user.id} logged in and already had role 'breeder'` );
         } else {
-            roles.push('breeder');
+            user.app_metadata.roles.push('breeder');
             console.log( `User: ${user.id} logged in and granted role 'breeder'` );
         }
 
         return {
             statusCode: 200,
-            body: JSON.stringify({ app_metadata: { roles: roles } }),
+            body: JSON.stringify({ app_metadata: { roles: user.app_metadata.roles } }),
         }
     } else {
         return {
