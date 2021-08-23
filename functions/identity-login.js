@@ -1,9 +1,23 @@
+const faunadb = require('faunadb')
+
+const q = faunadb.query;
+const client = new faunadb.Client({
+    secret: process.env.FAUNADB_SECRET
+})
+
 exports.handler = async (req, context) => {
     const body = JSON.parse(req.body)
 
     const eventType = body.event
     const user = body.user
     const email = user.email
+
+    await client.query(q.Paginate(q.Match(q.Ref("indexes/users_by_email"), email)))
+        .then((response) => {
+            console.log("All Users: " + response.data);
+        }, (error) => {
+            console.log("uh oh ... " + error);
+        })
 
     console.log(user, `${user.id} details`);
     if ( context.ClientContext && context.ClientContext.user )

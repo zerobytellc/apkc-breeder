@@ -9,13 +9,16 @@ exports.handler = async (event, context) => {
     console.log('Function !! ran...');
     await client.query(q.Paginate(q.Match(q.Ref("indexes/all_users"))))
         .then((response) => {
-            console.log( "All Users: " + response.data );
-        }, (error) => {console.log( "uh oh ... " + error );})
+            console.log("All Users: " + response.data);
+        }, (error) => {
+            console.log("uh oh ... " + error);
+        })
 
 
     const data = { name: 'mario', age: 35, job: 'plumber' };
 
     if (context.clientContext.user) {
+        console.log(context.clientContext.user);
         // return response to browser:
         return {
             statusCode: 200,
