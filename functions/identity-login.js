@@ -15,7 +15,7 @@ exports.handler = async (req, context) => {
     let users = await client.query(
         q.Map(
             q.Match(q.Ref("indexes/users_by_email"), email),
-            q.Lambda((user) => Get(user))
+            q.Lambda((user) => q.Get(user))
         )
     );
 
