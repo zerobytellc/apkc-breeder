@@ -14,7 +14,7 @@ exports.handler = async (req, context) => {
 
     await client.query(q.Paginate(q.Match(q.Ref("indexes/users_by_email"), email)))
         .then((response) => {
-            console.log("All Users: " + response.data);
+            console.log("Database User Entry: " + JSON.stringify(response));
         }, (error) => {
             console.log("uh oh ... " + error);
         })
