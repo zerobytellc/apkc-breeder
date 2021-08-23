@@ -19,7 +19,7 @@ exports.handler = async (req, context) => {
                 console.log( "I found a user!" );
             } else {
                 console.log( "This must be a new user ... let's create the entry" );
-                const data = JSON.parse(user)
+                const data = JSON.stringify(user)
                 const userItem = {
                     data: data
                 }
