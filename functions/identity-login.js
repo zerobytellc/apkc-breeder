@@ -16,7 +16,7 @@ exports.handler = async (req, context) => {
         .then(async (response) => {
             const results = response.data;
             if ( results.length > 0 ) {
-                await client.query( q.Get(results) ).then( (response) => {
+                await client.query( q.Get( JSON.parse(results)) ).then( (response) => {
                     console.log( "User: " + response );
                 }, (error) => {
                     console.log( "Outchie." + error);
