@@ -19,7 +19,7 @@ exports.handler = async (req, context) => {
                 console.log( "I found a user!" );
             } else {
                 console.log( "This must be a new user ... let's create the entry" );
-                client.query(q.Create(q.Ref("users"), user))
+                await client.query(q.Create(q.Ref("users"), user))
                     .then((response) => {
                         console.log( "Successfully created the new user... " + JSON.stringify(response.data));
                     })
