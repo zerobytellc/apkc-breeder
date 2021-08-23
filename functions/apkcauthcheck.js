@@ -10,7 +10,7 @@ exports.handler = async (event, context) => {
     await client.query(q.Paginate(q.Match(q.Ref("indexes/all_users"))))
         .then((response) => {
             console.log( "All Users: " + response.data );
-        }, (error) => {console.log( "uh oh ... " + error );}
+        }, (error) => {console.log( "uh oh ... " + error );})
 
 
     const data = { name: 'mario', age: 35, job: 'plumber' };
