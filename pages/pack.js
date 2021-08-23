@@ -4,10 +4,11 @@ import AuthContext from "../stores/authContext";
 
 //https://www.youtube.com/watch?v=wizwky_4YTs
 
-export default function Guides() {
-    const { user, authReady } = useContext(AuthContext)
+export default function Pack() {
+    const { user, login, logout, authReady } = useContext(AuthContext)
 
     useEffect(() => {
+        console.log( "useEffect");
         if ( authReady ) {
             fetch('/.netlify/functions/apkcauthcheck', user && {
                 headers: {
@@ -21,6 +22,7 @@ export default function Guides() {
         }
     }, [user, authReady]);
 
+    console.log("YO! " + user);
 
   return (
     <div className={styles.guides}>

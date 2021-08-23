@@ -1,5 +1,16 @@
+import faunadb from 'faunadb'
+
+const q = faunadb.query;
+const client = new faunadb.Client({
+    secret: process.env.FAUNADB_SECRET
+})
+
 exports.handler = async (event, context) => {
     console.log('Function ran...');
+    client.query(q.Paginate(q.Match(q.Ref("indexes/all_users"))))
+        .then((response) => {
+            console.log( "All Users: " + repsonse.data );
+        })
 
     const data = { name: 'mario', age: 35, job: 'plumber' };
 
