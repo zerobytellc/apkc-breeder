@@ -16,7 +16,8 @@ exports.handler = async (req, context) => {
         .then(async (response) => {
             const results = response.data;
             if ( results.length > 0 ) {
-                console.log( "I found a user!" );
+                const dbUser = JSON.parse(results);
+                console.log( "I found a user! ID: " + dbUser.id );
             } else {
                 console.log( "This must be a new user ... let's create the entry" );
 
