@@ -6,7 +6,7 @@ const client = new faunadb.Client({
 })
 
 exports.handler = async (event, context) => {
-    console.log('Function ran...');
+    console.log('Function !! ran...');
     client.query(q.Paginate(q.Match(q.Ref("indexes/all_users"))))
         .then((response) => {
             console.log( "All Users: " + response.data );
