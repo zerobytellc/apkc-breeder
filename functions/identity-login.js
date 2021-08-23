@@ -21,7 +21,7 @@ exports.handler = async (req, context) => {
                 console.log( "This must be a new user ... let's create the entry" );
 
                 const userItem = JSON.stringify({
-                    data: JSON.stringify(user)
+                    data: user
                 })
                 console.log( "Creating userItem: " + userItem );
                 await client.query(q.Create(q.Ref("users"), userItem))
