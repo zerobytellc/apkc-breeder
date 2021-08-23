@@ -16,7 +16,12 @@ exports.handler = async (req, context) => {
         .then(async (response) => {
             const results = response.data;
             if ( results.length > 0 ) {
-                console.log( "I found a user!" + results.data );
+                await q.query( q.Get(results) ).then( (response) => {
+                    console.log( "User: " + response );
+                }, () => {
+                    console.log( "Outchie." );
+                })
+                console.log( "I found a user!" + results );
 
             } else {
                 console.log( "This must be a new user ... let's create the entry" );
