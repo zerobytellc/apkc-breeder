@@ -18,8 +18,8 @@ exports.handler = async (req, context) => {
             if ( results.length > 0 ) {
                 await client.query( q.Get(results) ).then( (response) => {
                     console.log( "User: " + response );
-                }, () => {
-                    console.log( "Outchie." );
+                }, (error) => {
+                    console.log( "Outchie." + error);
                 })
                 console.log( "I found a user!" + results );
 
