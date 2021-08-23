@@ -13,7 +13,7 @@ exports.handler = async (req, context) => {
     const email = user.email
 
     await client.query(q.Paginate(q.Match(q.Ref("indexes/users_by_email"), email)))
-        .then((response) => {
+        .then(async (response) => {
             const results = response.data;
             if ( results.length > 0 ) {
                 console.log( "I found a user!" );
