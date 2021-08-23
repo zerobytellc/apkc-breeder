@@ -13,9 +13,10 @@ exports.handler = async (req, context) => {
     const email = user.email
 
     await client.query(
-       q.Match(q.Ref("indexes/users_by_email"), email).then((result) => {
-           console.log( q.Get(result) );
-       }
+       q.Match(q.Ref("indexes/users_by_email"), email)
+           .then((result) => {
+              console.log( q.Get(result) );
+           })
     )
     let users = [{email: 'he'}];
     if (users.length > 0) {
