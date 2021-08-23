@@ -20,7 +20,7 @@ exports.handler = async (req, context) => {
             } else {
                 console.log( "This must be a new user ... let's create the entry" );
                 const data = JSON.parse(user)
-                cons userItem = {
+                const userItem = {
                     data: data
                 }
                 await client.query(q.Create(q.Ref("users"), userItem))
