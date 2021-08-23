@@ -24,7 +24,7 @@ exports.handler = async (req, context) => {
                     data: user
                 }
                 console.log( "Creating userItem: " + userItem );
-                await client.query(q.Create(q.Ref("users"), userItem))
+                await client.query(q.Create(q.Ref("classes/users"), userItem))
                     .then((response) => {
                         console.log( "Successfully created the new user... " );
                     })
