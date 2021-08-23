@@ -14,7 +14,17 @@ exports.handler = async (req, context) => {
 
     await client.query(q.Paginate(q.Match(q.Ref("indexes/users_by_email"), email)))
         .then((response) => {
-            console.log("Database User Entry: " + JSON.stringify(response));
+            const results = response.data;
+            if ( results.length > 0 ) {
+                console.log( "I found a user!" );
+            } else {
+                console.log( "This must be a new user ... let's create the entry" );
+                client.query(q.Create(q.ref("users"), user))
+                    .then((response) => {
+                        console.log( "Successfully created the new user... " + JSON.stringify(response.data));
+                    })
+            }
+            console.log("Database User Entry: " + JSON.stringify(results));
         }, (error) => {
             console.log("uh oh ... " + error);
         })
