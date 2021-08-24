@@ -26,16 +26,13 @@ exports.handler = async (req, context) => {
                 console.log( "This must be a new user ... let's create the entry" );
 
                 const userItem = {
-                    data: user
+                    data: {
+                        ...user,
+                        approved: false,
+                    }
                 }
-                databaseUser = {
-                    ...userItem,
-                    ...{
-                        approved: false
-                    },
-                }
-                console.log( "Creating userItem: " + JSON.stringify(databaseUser) );
-                await client.query(q.Create(q.Ref("classes/users"), databaseUser))
+                console.log( "Creating userItem: " + JSON.stringify(userItem) );
+                await client.query(q.Create(q.Ref("classes/users"), userItem))
                     .then((response) => {
                         console.log( "Successfully created the new user... " );
                     })
