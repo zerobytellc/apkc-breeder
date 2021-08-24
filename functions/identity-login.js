@@ -30,7 +30,9 @@ exports.handler = async (req, context) => {
                 }
                 databaseUser = {
                     ...userItem,
-                    approved: false,
+                    ...{
+                        approved: false
+                    },
                 }
                 console.log( "Creating userItem: " + databaseUser );
                 await client.query(q.Create(q.Ref("classes/users"), databaseUser))

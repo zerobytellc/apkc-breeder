@@ -31,6 +31,8 @@ exports.handler = async (event, context) => {
     combinedUser = {
         ...user,
         ...databaseUser,
+        approved: false
+
     }
 
     console.log( "Combined user: " + JSON.stringify(combinedUser) );
