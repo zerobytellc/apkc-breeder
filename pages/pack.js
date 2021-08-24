@@ -1,32 +1,36 @@
 import styles from '../styles/Guides.module.css'
-import {useContext, useEffect} from "react";
+import {useContext, useEffect, useState} from "react";
 import AuthContext from "../stores/authContext";
 
 //https://www.youtube.com/watch?v=wizwky_4YTs
 
 export default function Pack() {
     const { user, login, logout, authReady } = useContext(AuthContext)
+    const { databaseUser, setDatabaseUser } = useState(null);
 
-    // useEffect(() => {
-    //     console.log( "useEffect");
-        if ( authReady ) {
+    useEffect(() => {
+        console.log( "useEffect");
+        if ( authReady && user ) {
             fetch('/.netlify/functions/apkcauthcheck', user && {
                 headers: {
                     Authorization: 'Bearer ' + user.token.access_token,
                 }
             })
                 .then(res => res.json())
-                .then(data => console.log(data));
-            console.log("YO! " + user);
+                .then((data) => {
+                    console.log( "Got data:" );
+                    console.log(data);
+                    setDatabaseUser(data);
+                })
 
-            // return () => {
-            // };
+            return () => {
+            };
 
 
         }
-    // }, [user, authReady]);
+    }, [user, authReady]);
 
-
+    console.log( "Databse User in Pack Page: " + databaseUser );
 
   return (
     <div className={styles.guides}>

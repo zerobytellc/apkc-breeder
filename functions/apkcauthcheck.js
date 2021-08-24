@@ -9,42 +9,28 @@ exports.handler = async (event, context) => {
     console.log('Function !! ran...');
 
     const user = context.clientContext.user
-    const email = user.email
+    let authorized = false;
     let databaseUser = null;
 
-    await client.query(q.Paginate(q.Match(q.Ref("indexes/users_by_email"), email)))
-        .then(async (response) => {
-            const results = response.data;
-            if ( results.length > 0 ) {
-                await client.query(q.Get(q.Match(q.Ref("indexes/users_by_email"), email)))
-                    .then((response) => {
-                        databaseUser = response.data;
-                        console.log( typeof databaseUser );
-                    });
-            } else {
-                console.log( "This must be a new user ... " );
-            }
-        }, (error) => {
-            console.log("uh oh ... " + error);
-        })
+    if (user) {
+        const email = user.email
+        await client.query(q.Get(q.Match(q.Ref("indexes/users_by_email"), email)))
+            .then((response) => {
+                databaseUser = response.data;
+            });
 
-    combinedUser = {
-        ...user,
-        ...databaseUser,
-        approved: false
-
+        authorized = (databaseUser && databaseUser.approved)
     }
 
-    console.log( "Combined user: " + JSON.stringify(combinedUser) );
-
-    if (context.clientContext.user) {
-        console.log(context.clientContext.user);
+    if ( authorized ) {
         // return response to browser:
+        console.log( "YAY!") ;
         return {
             statusCode: 200,
-            body: JSON.stringify(combinedUser),
+            body: JSON.stringify(databaseUser),
         }
     } else {
+        console.log( "BOO!" );
         return {
             statusCode: 401,
             body: JSON.stringify({msg: 'You must be logged in to see this.'}),
