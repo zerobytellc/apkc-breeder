@@ -7,8 +7,8 @@ import AuthContext from "../stores/authContext";
 export default function Pack() {
     const { user, login, logout, authReady } = useContext(AuthContext)
 
-    useEffect(() => {
-        console.log( "useEffect");
+    // useEffect(() => {
+    //     console.log( "useEffect");
         if ( authReady ) {
             fetch('/.netlify/functions/apkcauthcheck', user && {
                 headers: {
@@ -19,12 +19,12 @@ export default function Pack() {
                 .then(data => console.log(data));
             console.log("YO! " + user);
 
-            return () => {
-            };
+            // return () => {
+            // };
 
 
         }
-    }, [user, authReady]);
+    // }, [user, authReady]);
 
 
 
@@ -33,7 +33,6 @@ export default function Pack() {
       {authReady && user && <h2>{user.user_metadata.full_name}'s Pack</h2>}
       {authReady && user && <p>This is where you will come to see registered members of your pack, as well as add, remove, or modify registrations for pack members... {user.email}</p>}
 
-      // If there's no user...
       {authReady && !user && <p>You must be logged in to view this content.</p>}
     </div>
   )

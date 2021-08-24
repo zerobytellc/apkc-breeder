@@ -11,13 +11,17 @@ exports.handler = async (req, context) => {
     const eventType = body.event
     const user = body.user
     const email = user.email
+    let databaseUser = null
 
     await client.query(q.Paginate(q.Match(q.Ref("indexes/users_by_email"), email)))
         .then(async (response) => {
             const results = response.data;
             if ( results.length > 0 ) {
                 console.log( "Existing user" );
-
+                await client.query(q.Get(q.Match(q.Ref("indexes/users_by_email"), email)))
+                    .then((response) => {
+                        databaseUser = response.data;
+                    });
             } else {
                 console.log( "This must be a new user ... let's create the entry" );
 
@@ -25,7 +29,11 @@ exports.handler = async (req, context) => {
                     data: user
                 }
                 console.log( "Creating userItem: " + userItem );
-                await client.query(q.Create(q.Ref("classes/users"), userItem))
+                databaseUser = {
+                    ...userItem,
+                    approved: false,
+                }
+                await client.query(q.Create(q.Ref("classes/users"), databaseUser))
                     .then((response) => {
                         console.log( "Successfully created the new user... " );
                     })
